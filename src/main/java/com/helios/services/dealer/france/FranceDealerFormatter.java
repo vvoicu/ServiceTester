@@ -1,21 +1,12 @@
 package com.helios.services.dealer.france;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.StringWriter;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Result;
-import javax.xml.transform.Source;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
@@ -27,17 +18,50 @@ import com.helios.services.dealer.france.datamodels.DealerModel;
 import com.helios.services.dealer.france.datamodels.ServiceModel;
 import com.helios.tools.FormatterUtils;
 
+
 public class FranceDealerFormatter extends FormatterUtils{
+	
+//	public Document generateDocumentRoot(List<Document> documentList) throws ParserConfigurationException{
+//		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+//		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+//
+//		// root element
+//		Document docRoot = docBuilder.newDocument();
+//		
+//		Element searchResults = docRoot.createElement(FranceConstants.DOC_ROOT);
+//		docRoot.appendChild(searchResults);
+//		
+//		Element dealersContainer = docRoot.createElement(FranceConstants.DOC_DEALERS);
+//		searchResults.appendChild(dealersContainer);
+//		
+//		if(documentList.size() > 0){
+//			for(Document docNow:documentList){
+//				dealersContainer.appendChild(docNow);
+//			}
+//		}
+//		
+//		return docRoot;
+//	}
 
 	// Will generate a dealer - France Type
 	public Document generateFranceData(DealerModel model) throws ParserConfigurationException, IOException {
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+		
+
 
 		// root element
 		Document doc = docBuilder.newDocument();
+		
+		Element searchResults = doc.createElement(FranceConstants.DOC_ROOT);
+		doc.appendChild(searchResults);
+		
+		Element dealersContainer = doc.createElement(FranceConstants.DOC_DEALERS);
+		searchResults.appendChild(dealersContainer);
+		
+		
 		Element dealerRoot = doc.createElement(FranceConstants.DEALER_TAG);
-		doc.appendChild(dealerRoot);
+		dealersContainer.appendChild(dealerRoot);
 
 		Element birID = doc.createElement(FranceConstants.BIR_ID_TAG);
 		birID.appendChild(doc.createTextNode(model.getBir_id()));

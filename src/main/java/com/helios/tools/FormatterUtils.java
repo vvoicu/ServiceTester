@@ -9,7 +9,7 @@ import org.w3c.dom.Document;
 public class FormatterUtils {
 	
 	@SuppressWarnings("deprecation")
-	public String printResutls(Document doc) throws TransformerException, IOException {
+	public static String printResutls(Document doc) throws TransformerException, IOException {
 
 		java.io.ByteArrayOutputStream data = new java.io.ByteArrayOutputStream();
 		java.io.PrintStream ps = new java.io.PrintStream(data);

@@ -23,6 +23,11 @@ public class FranceConstants {
 	
 	
 	//------------------------------XML FIELDS----------------//
+	//Wrappers
+
+	public static final String DOC_ROOT = "search_result";
+	public static final String DOC_DEALERS = "dealers";
+	
 	//Dealer fields
 	public static String DEALER_TAG = "dealer";
 	public static String BIR_ID_TAG = "bir_id";

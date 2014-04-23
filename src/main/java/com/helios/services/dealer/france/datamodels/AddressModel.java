@@ -78,7 +78,7 @@ public class AddressModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(18, Mode.ALPHANUMERICSCHAR);
+			value = FieldGenerators.generateRandomString(18, Mode.ALPHANUMERIC);
 		else
 			value = FieldGenerators.generateRandomString(19, Mode.NUMERIC);
 
@@ -93,7 +93,7 @@ public class AddressModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(18, Mode.ALPHANUMERICSCHAR);
+			value = FieldGenerators.generateRandomString(18, Mode.ALPHANUMERIC);
 		else
 			value = FieldGenerators.generateRandomString(19, Mode.NUMERIC);
 
@@ -108,7 +108,7 @@ public class AddressModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(18, Mode.ALPHANUMERICSCHAR);
+			value = FieldGenerators.generateRandomString(18, Mode.ALPHANUMERIC);
 		else
 			value = FieldGenerators.generateRandomString(19, Mode.NUMERIC);
 

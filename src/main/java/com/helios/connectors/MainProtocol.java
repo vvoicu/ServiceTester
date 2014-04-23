@@ -21,7 +21,7 @@ import com.helios.tools.Constants;
 public class MainProtocol {
 
 	public DefaultHttpClient httpclient = new DefaultHttpClient();
-	public HttpClient client;
+	public HttpClient client = new DefaultHttpClient();
 	public boolean validateResponseStatusCode = true;
 	
 	public HttpEntity entity;
@@ -49,17 +49,21 @@ public class MainProtocol {
 		HttpGetWithEntity myGet = new HttpGetWithEntity();
 		URI uri = URI.create(url);
 		myGet.setURI(uri);
-		myGet.setHeader("Content-Type", "application/json");
+		myGet.setHeader("Content-Type", "text/json");
+//		myGet.setHeader("Content-Type", "text/xml");
 		myGet.setEntity(new StringEntity(message, "UTF8"));
 
 		System.out.println("Request: " + myGet.toString());
 
 		entity = new StringEntity(message, "UTF8");
 
-		HttpResponse response = client.execute(myGet);
+		HttpResponse response = httpclient.execute(myGet);
+//		HttpResponse response = client.execute(myGet);
 
 
 		System.out.println("Response Code : " + response.getStatusLine());
+		
+		
 		return response;
 	}
 
