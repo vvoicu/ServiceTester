@@ -1,4 +1,4 @@
-package com.junit.paprika;
+package com.junit;
 
 import junit.framework.TestCase;
 

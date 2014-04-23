@@ -12,6 +12,7 @@ import org.junit.runners.JUnit4;
 
 import com.helios.services.paprika.PaprikaModel;
 import com.helios.services.paprika.PaprikaValidator;
+import com.junit.BaseTest;
 
 
 @RunWith(JUnit4.class)

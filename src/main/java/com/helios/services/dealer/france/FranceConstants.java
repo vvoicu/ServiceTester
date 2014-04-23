@@ -1,4 +1,7 @@
 package com.helios.services.dealer.france;
+
+import java.util.Date;
+
 /**
  * Tags for the xml - This is modeled after the france xml response
  * http://www.renault.fr/dealerlocator/searchservice.action?search=&location=paris&latitudeChosen=&longitudeChosen=&radiusIndex=2
@@ -7,6 +10,19 @@ package com.helios.services.dealer.france;
  */
 public class FranceConstants {
 	
+	//Custom Data
+	public static Date RANDOM_DATE_MIN = new Date("1/12/2014");
+	public static Date RANDOM_DATE_MAX = new Date("20/12/2015");
+
+	public static String[] IS_TRUE_OR_FALSE = { "true", "false"};
+
+	public static String[] BRAND_TAGS = { "dacia", "renault", "nissan"};
+	public static String[] BRAND_TYPES= { "MINOR", "MAJOR"};
+	public static String[] SERVICE_NAMES = { "VENTE Á CLIENTS PROFESSIONNELS", "ATELIER MÉCANIQUE", "MAGASIN PIÈCES DE RECHANGE", "BOUTIQUE"};
+	
+	
+	
+	//------------------------------XML FIELDS----------------//
 	//Dealer fields
 	public static String DEALER_TAG = "dealer";
 	public static String BIR_ID_TAG = "bir_id";
@@ -14,8 +30,15 @@ public class FranceConstants {
 	public static final String COUNTRY_TAG = "country";
 	public static final String DEALER_NAME = "dealer_name";
 	public static final String HAS_FIXED_PRICE_TAG = "has_fixedprice";
+	
+
+	public static final String SERVICES_TAG = "services";
+
+	public static final String DISTANCE = "distance";
 		
 	//Address fields
+
+	public static final String ADR_TAG = "address";
 	public static final String ADR_COMPLETLINE = "complementAddressLine";
 	public static final String ADR_CITY = "city";
 	public static final String ADR_COUNTRY = "country";
@@ -42,6 +65,7 @@ public class FranceConstants {
 	
 	//Appointment Fields
 	public static final String APO_TAG = "appointment";
+	public static final String APOS_TAG =  "appointments";
 	public static final String APO_AVAIL = "available";
 	public static final String APO_DAY = "day";
 	public static final String APO_START = "start";
