@@ -49,8 +49,8 @@ public class MainProtocol {
 		HttpGetWithEntity myGet = new HttpGetWithEntity();
 		URI uri = URI.create(url);
 		myGet.setURI(uri);
-		myGet.setHeader("Content-Type", "text/json");
-//		myGet.setHeader("Content-Type", "text/xml");
+//		myGet.setHeader("Content-Type", "text/json");
+		myGet.setHeader("Content-Type", "text/xml");
 		myGet.setEntity(new StringEntity(message, "UTF8"));
 
 		System.out.println("Request: " + myGet.toString());

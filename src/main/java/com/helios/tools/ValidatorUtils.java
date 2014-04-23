@@ -10,27 +10,25 @@ import org.apache.http.ParseException;
 import org.apache.http.util.EntityUtils;
 
 public class ValidatorUtils {
-	
+
 	public void assertMessage(String msgValidatrion, String response) throws IOException {
 		assertTrue("Failure: Response message is invalid: " + response, response.contains(msgValidatrion));
 	}
-	
-	
-	public void assertMessage(HttpResponse response,String desiredMessage) {
+
+	public void assertMessage(HttpResponse response, String desiredMessage) throws ParseException, IOException {
 		HttpEntity entity = response.getEntity();
 		String res = null;
-		try {
-			res = EntityUtils.toString(entity);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		res = EntityUtils.toString(entity);
+
 		System.out.println("Response: " + res);
 		assertTrue("Failure: Response message is invalid: " + res, res.contains(desiredMessage));
+	}
+	public void printMessage(HttpResponse response) throws ParseException, IOException {
+		HttpEntity entity = response.getEntity();
+		String res = null;
+		res = EntityUtils.toString(entity);
+		
+		System.out.println("Response: " + res);
 	}
 
 }

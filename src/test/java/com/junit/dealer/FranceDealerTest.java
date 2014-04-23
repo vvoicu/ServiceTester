@@ -1,9 +1,11 @@
 package com.junit.dealer;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.util.EntityUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,16 +22,14 @@ import com.junit.BaseTest;
 @RunWith(JUnit4.class)
 public class FranceDealerTest extends BaseTest{
 	
-	public String response="";
 	List<Document> docList= new ArrayList<Document>();
-	public MongoConnector mongo = new MongoConnector();
+	
 	//Input data
 //	public String url = "http://localhost:8888";
 	public String url = "http://localhost:8081";
-//	public PaprikaModel message;
-	public String msgValidatrion = "Message";
+	
 	public DealerModel dModel;
-	public ValidatorUtils validatorUtils;
+	
 	public FranceDealerFormatter formatter= new FranceDealerFormatter();
 	
 
@@ -45,6 +45,8 @@ public class FranceDealerTest extends BaseTest{
 	
 	@Test
 	public void verifyFranceDealer() throws Exception{
+		
+				
 //		HttpResponse responseMessage = protocol.sendGet(url, message.toString());
 		String myMessage = FormatterUtils.printResutls(formatter.generateFranceData(dModel));
 //		docList.add(formatter.generateFranceData(dModel));
@@ -52,10 +54,15 @@ public class FranceDealerTest extends BaseTest{
 		
 		HttpResponse responseMessage = protocol.sendGet(url, myMessage);
 		
-//		validatorUtils.assertMessage(responseMessage, response);
+		validatorUtils.printMessage(responseMessage);
+		
+		System.out.println(responseMessage.getEntity().toString());
+//		System.out.println(EntityUtils.toString(responseMessage.getEntity()).toString());
 		
 		
+			
 		mongo.displayAllDataSets();
+		mongo.displayCollectionNames();
 	}
 
 }
