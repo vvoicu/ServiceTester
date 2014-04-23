@@ -19,29 +19,7 @@ import com.helios.services.dealer.france.datamodels.ServiceModel;
 import com.helios.tools.FormatterUtils;
 
 
-public class FranceDealerFormatter extends FormatterUtils{
-	
-//	public Document generateDocumentRoot(List<Document> documentList) throws ParserConfigurationException{
-//		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-//		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-//
-//		// root element
-//		Document docRoot = docBuilder.newDocument();
-//		
-//		Element searchResults = docRoot.createElement(FranceConstants.DOC_ROOT);
-//		docRoot.appendChild(searchResults);
-//		
-//		Element dealersContainer = docRoot.createElement(FranceConstants.DOC_DEALERS);
-//		searchResults.appendChild(dealersContainer);
-//		
-//		if(documentList.size() > 0){
-//			for(Document docNow:documentList){
-//				dealersContainer.appendChild(docNow);
-//			}
-//		}
-//		
-//		return docRoot;
-//	}
+public class FranceDealerFormatter extends FormatterUtils {
 
 	// Will generate a dealer - France Type
 	public Document generateFranceData(DealerModel model) throws ParserConfigurationException, IOException {
@@ -154,11 +132,11 @@ public class FranceDealerFormatter extends FormatterUtils{
 		Element isAvailable = doc.createElement(FranceConstants.SBOL_ISAVL);
 		isAvailable.appendChild(doc.createTextNode(FranceConstants.SBOL_ISAVL_VAL));
 		sbolRoot.appendChild(isAvailable);
-		
+
 		Element appontmentsTag = doc.createElement(FranceConstants.APOS_TAG);
 		sbolRoot.appendChild(appontmentsTag);
 
-		if (model.getAddressList().size() > 0) {
+		if (model.getAppointmentList().size() > 0) {
 			for (AppointmentModel modelNow : model.getAppointmentList()) {
 				Element appointment = doc.createElement(FranceConstants.APO_TAG);
 				appontmentsTag.appendChild(appointment);
@@ -195,7 +173,5 @@ public class FranceDealerFormatter extends FormatterUtils{
 		return doc;
 
 	}
-
-
 
 }
