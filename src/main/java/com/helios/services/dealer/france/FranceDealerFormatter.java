@@ -1,21 +1,11 @@
 package com.helios.services.dealer.france;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.StringWriter;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Result;
-import javax.xml.transform.Source;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
@@ -27,7 +17,7 @@ import com.helios.services.dealer.france.datamodels.DealerModel;
 import com.helios.services.dealer.france.datamodels.ServiceModel;
 import com.helios.tools.FormatterUtils;
 
-public class FranceDealerFormatter extends FormatterUtils{
+public class FranceDealerFormatter extends FormatterUtils {
 
 	// Will generate a dealer - France Type
 	public Document generateFranceData(DealerModel model) throws ParserConfigurationException, IOException {
@@ -130,11 +120,11 @@ public class FranceDealerFormatter extends FormatterUtils{
 		Element isAvailable = doc.createElement(FranceConstants.SBOL_ISAVL);
 		isAvailable.appendChild(doc.createTextNode(FranceConstants.SBOL_ISAVL_VAL));
 		sbolRoot.appendChild(isAvailable);
-		
+
 		Element appontmentsTag = doc.createElement(FranceConstants.APOS_TAG);
 		sbolRoot.appendChild(appontmentsTag);
 
-		if (model.getAddressList().size() > 0) {
+		if (model.getAppointmentList().size() > 0) {
 			for (AppointmentModel modelNow : model.getAppointmentList()) {
 				Element appointment = doc.createElement(FranceConstants.APO_TAG);
 				appontmentsTag.appendChild(appointment);
@@ -171,7 +161,5 @@ public class FranceDealerFormatter extends FormatterUtils{
 		return doc;
 
 	}
-
-
 
 }
