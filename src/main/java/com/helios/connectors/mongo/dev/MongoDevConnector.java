@@ -23,7 +23,7 @@ public class MongoDevConnector {
 	private DB workingDB;
 	
 	public MongoDevConnector() throws UnknownHostException{
-		mongoDevClient = new MongoClient(Constants.Mule_MONGO_URL, Constants.Mule_MONGO_PORT);
+		mongoDevClient = new MongoClient(Constants.DEV_MONGO_URL, Constants.DEV_MONGO_PORT);
 	}
 	
 	public void displayAllDataSets() throws UnknownHostException {
@@ -34,7 +34,7 @@ public class MongoDevConnector {
 	}
 	
 	public void displayCollectionNames() throws NumberFormatException, UnknownHostException{
-		workingDB = mongoDevClient.getDB(Constants.Mule_MONGO_DB);		
+		workingDB = mongoDevClient.getDB(Constants.DEV_MONGO_DB);		
 		Set<String> dbCollectionNames = workingDB.getCollectionNames();
 		
 		for(String nameNow:dbCollectionNames){

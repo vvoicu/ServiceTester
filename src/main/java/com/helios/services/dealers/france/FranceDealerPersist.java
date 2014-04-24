@@ -51,7 +51,7 @@ public class FranceDealerPersist extends MongoQAConnector{
 	
 	public static DealerModel getFranceDealear(String testName) {
 		DealerModel result = null;
-		workingDB = mongoQaClient.getDB(Constants.TDD_MONGO_DB);
+		workingDB = mongoQaClient.getDB(Constants.QA_MONGO_DB);
 //		DBCollection table = workingDB.getCollection(testName);
 		DBCursor cursor = workingDB.getCollection(testName).find();
 		

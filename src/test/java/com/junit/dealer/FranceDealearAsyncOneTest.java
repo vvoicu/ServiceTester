@@ -54,7 +54,7 @@ public class FranceDealearAsyncOneTest extends BaseTest{
 		
 //		validatorUtils.printMessage(responseMessage);
 		
-		System.out.println(result);
+		System.out.println("Response message: " + result);
 //		System.out.println(EntityUtils.toString(responseMessage.getEntity()).toString());
 		
 			
@@ -62,11 +62,16 @@ public class FranceDealearAsyncOneTest extends BaseTest{
 		mongoDev.displayCollectionNames();
 		
 		System.out.println(dModel.getDealer_name());
+		
+		DealerModel qaDealerModel = MongoQAConnector.getFranceDealear(this.getClass().getSimpleName());
+		
+		System.out.println("Read from QA mongo: bir -> " + qaDealerModel.getBir_id());
 	}
 
 	@After
 	public void saveToQaData(){
 		MongoQAConnector.saveFranceDealer(dModel, this.getClass().getSimpleName());
+
 	}
 	
 	

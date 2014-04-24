@@ -14,12 +14,12 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 
-
 /**
- * This file is should write test data to a MongoDb.
- * Note: On the MongoDevConnector should not perform write data operations.
+ * This file is should write test data to a MongoDb. Note: On the
+ * MongoDevConnector should not perform write data operations.
+ * 
  * @author vladvoicu
- *
+ * 
  */
 public class MongoQAConnector {
 
@@ -27,11 +27,11 @@ public class MongoQAConnector {
 	protected static DB workingDB;
 
 	public MongoQAConnector() throws UnknownHostException {
-		mongoQaClient = new MongoClient(Constants.TDD_MONGO_URL, Constants.TDD_MONGO_PORT);
+		mongoQaClient = new MongoClient(Constants.QA_MONGO_URL, Constants.QA_MONGO_PORT);
 	}
 
 	public void displayCollectionNames() throws NumberFormatException, UnknownHostException {
-		workingDB = mongoQaClient.getDB(Constants.TDD_MONGO_DB);
+		workingDB = mongoQaClient.getDB(Constants.QA_MONGO_DB);
 		Set<String> dbCollectionNames = workingDB.getCollectionNames();
 
 		for (String nameNow : dbCollectionNames) {
@@ -95,9 +95,9 @@ public class MongoQAConnector {
 
 		try {
 			while (cursor.hasNext()) {
-//				System.out.println(cursor.next());
+				// System.out.println(cursor.next());
 				dbObject = cursor.next();
-				
+
 				System.out.println("DDIT : " + dbObject.get(FranceConstants.BIR_ID_TAG).toString());
 				result.setBir_id(dbObject.get(FranceConstants.BIR_ID_TAG).toString());
 				result.setCountry(dbObject.get(FranceConstants.COUNTRY_TAG).toString());
