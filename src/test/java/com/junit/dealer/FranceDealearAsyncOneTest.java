@@ -1,10 +1,5 @@
 package com.junit.dealer;
 
-import java.io.IOException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.junit.Before;
@@ -17,6 +12,8 @@ import com.helios.services.dealers.france.FranceDealerFormatter;
 import com.helios.services.dealers.france.datamodels.DealerModel;
 import com.helios.tools.utils.FormatterUtils;
 import com.junit.BaseTest;
+
+import cucumber.api.java.After;
 
 
 @RunWith(JUnit4.class)
@@ -33,12 +30,11 @@ public class FranceDealearAsyncOneTest extends BaseTest{
 //		System.out.println(this.getClass().getSimpleName());
 //		System.out.println(mongoUtilus.hasEntries(this.getClass().getSimpleName()));
 		
-		if(mongoUtilus.hasEntries(this.getClass().getSimpleName()) > 0){
+		if(mongoQA.hasEntries(this.getClass().getSimpleName()) > 0){
 			dModel = MongoQAConnector.getFranceDealear(this.getClass().getSimpleName());
 			
 		}else{
 			dModel = new DealerModel(true);
-			MongoQAConnector.saveFranceDealer(dModel, this.getClass().getSimpleName());
 		}
 		
 	}
@@ -53,6 +49,7 @@ public class FranceDealearAsyncOneTest extends BaseTest{
 		HttpResponse responseMessage = protocol.sendGet(url, myMessage);
 		
 //		StringEntity result = new StringEntity(responseMessage.toString(), "UTF8");
+		@SuppressWarnings("deprecation")
 		String result = EntityUtils.getContentCharSet(responseMessage.getEntity());
 		
 //		validatorUtils.printMessage(responseMessage);
@@ -67,6 +64,10 @@ public class FranceDealearAsyncOneTest extends BaseTest{
 		System.out.println(dModel.getDealer_name());
 	}
 
+	@After
+	public void saveToQaData(){
+		MongoQAConnector.saveFranceDealer(dModel, this.getClass().getSimpleName());
+	}
 	
 	
 }

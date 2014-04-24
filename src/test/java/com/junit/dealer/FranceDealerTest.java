@@ -1,23 +1,15 @@
 package com.junit.dealer;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-
 import org.apache.http.HttpResponse;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.util.EntityUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import org.w3c.dom.Document;
 
-import com.helios.connectors.mongo.dev.MongoDevConnector;
 import com.helios.services.dealers.france.FranceDealerFormatter;
 import com.helios.services.dealers.france.datamodels.DealerModel;
 import com.helios.tools.utils.FormatterUtils;
-import com.helios.tools.utils.ValidatorUtils;
 import com.junit.BaseTest;
 
 @RunWith(JUnit4.class)
@@ -55,6 +47,7 @@ public class FranceDealerTest extends BaseTest{
 		HttpResponse responseMessage = protocol.sendGet(url, myMessage);
 		
 //		StringEntity result = new StringEntity(responseMessage.toString(), "UTF8");
+		@SuppressWarnings("deprecation")
 		String result = EntityUtils.getContentCharSet(responseMessage.getEntity());
 		
 //		validatorUtils.printMessage(responseMessage);

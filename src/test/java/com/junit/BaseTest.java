@@ -17,20 +17,20 @@ public class BaseTest extends TestCase{
 	public MongoDevConnector mongoDev;
 	public HttpMainProtocol protocol = new HttpMainProtocol();
 	public ValidatorUtils validatorUtils = new ValidatorUtils();
-	public MongoQAConnector mongoUtilus;
+	public MongoQAConnector mongoQA;
 
 	@Before
 	public void startComponents(){
 		 try {
 			mongoDev = new MongoDevConnector();
 		} catch (UnknownHostException e) {
-			System.out.println("Error: Mule Mongo connection could not be initialized");
+			System.out.println("Error: Dev Mongo connection could not be initialized");
 			e.printStackTrace();
 		}		 
 		 try {
-			 mongoUtilus = new MongoQAConnector();
+			 mongoQA = new MongoQAConnector();
 		} catch (UnknownHostException e) {
-			System.out.println("Error: Test Mongo connection could not be initialized");
+			System.out.println("Error: QA Mongo connection could not be initialized");
 			e.printStackTrace();
 		}
 		 
