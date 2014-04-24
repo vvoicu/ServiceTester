@@ -1,4 +1,4 @@
-package com.helios.tools;
+package com.helios.tools.utils;
 
 import java.io.IOException;
 
@@ -6,6 +6,12 @@ import javax.xml.transform.TransformerException;
 
 import org.w3c.dom.Document;
 
+/**
+ * This will transform a Document, expected xml, into a String.
+ * Useful to integrate with other systems.
+ * @author vladvoicu
+ *
+ */
 public class FormatterUtils {
 	
 	@SuppressWarnings("deprecation")

@@ -1,4 +1,4 @@
-package com.helios.connectors;
+package com.helios.connectors.http;
 
 import java.net.URI;
 

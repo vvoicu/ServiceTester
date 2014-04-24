@@ -13,11 +13,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.w3c.dom.Document;
 
-import com.helios.connectors.mongo.MongoDevConnector;
-import com.helios.services.dealer.france.FranceDealerFormatter;
-import com.helios.services.dealer.france.datamodels.DealerModel;
-import com.helios.tools.FormatterUtils;
-import com.helios.tools.ValidatorUtils;
+import com.helios.connectors.mongo.dev.MongoDevConnector;
+import com.helios.services.dealers.france.FranceDealerFormatter;
+import com.helios.services.dealers.france.datamodels.DealerModel;
+import com.helios.tools.utils.FormatterUtils;
+import com.helios.tools.utils.ValidatorUtils;
 import com.junit.BaseTest;
 
 @RunWith(JUnit4.class)

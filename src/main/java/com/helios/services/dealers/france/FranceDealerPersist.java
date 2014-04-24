@@ -1,18 +1,15 @@
-package com.helios.persistance.dealer;
+package com.helios.services.dealers.france;
 
 import java.net.UnknownHostException;
-import java.util.List;
 
-import com.helios.persistance.MongoUtils;
-import com.helios.services.dealer.france.FranceConstants;
-import com.helios.services.dealer.france.datamodels.AddressModel;
-import com.helios.services.dealer.france.datamodels.DealerModel;
+import com.helios.connectors.mongo.qa.MongoQAConnector;
+import com.helios.services.dealers.france.datamodels.DealerModel;
 import com.helios.tools.Constants;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 
-public class FranceDealerPersist extends MongoUtils{
+public class FranceDealerPersist extends MongoQAConnector{
 
 	public FranceDealerPersist() throws UnknownHostException {
 		super();
@@ -37,7 +34,7 @@ public class FranceDealerPersist extends MongoUtils{
 		
 		//-------------------------------------
 //		workingDB = mongoClient.getDB(Constants.TDD_MONGO_DB);
-		workingDB = mongoClient.getDB(testName);
+		workingDB = mongoQaClient.getDB(testName);
 		
 		DBCollection table = workingDB.getCollection(FranceConstants.DEALER_TAG);
 		BasicDBObject document = new BasicDBObject();
@@ -54,7 +51,7 @@ public class FranceDealerPersist extends MongoUtils{
 	
 	public static DealerModel getFranceDealear(String testName) {
 		DealerModel result = null;
-		workingDB = mongoClient.getDB(Constants.TDD_MONGO_DB);
+		workingDB = mongoQaClient.getDB(Constants.TDD_MONGO_DB);
 		DBCollection table = workingDB.getCollection(testName);
 		DBCursor cursor = workingDB.getCollection(testName).find();
 		

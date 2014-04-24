@@ -1,9 +1,11 @@
-package com.helios.connectors;
+package com.helios.connectors.http;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
+
+
 
 
 import org.apache.http.HttpEntity;

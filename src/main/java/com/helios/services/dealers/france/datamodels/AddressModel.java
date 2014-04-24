@@ -1,4 +1,4 @@
-package com.helios.services.dealer.france.datamodels;
+package com.helios.services.dealers.france.datamodels;
 
 import com.helios.tools.FieldGenerators;
 import com.helios.tools.FieldGenerators.Mode;

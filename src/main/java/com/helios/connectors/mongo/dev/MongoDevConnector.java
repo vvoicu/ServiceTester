@@ -1,4 +1,4 @@
-package com.helios.connectors.mongo;
+package com.helios.connectors.mongo.dev;
 
 import java.net.UnknownHostException;
 import java.util.List;
@@ -12,28 +12,29 @@ import com.mongodb.MongoClient;
 
 
 /**
- * MongoConnector Will handle all transactions with the Mule Mongo DB.
+ * MongoConnector Will handle all transactions with the Mule Mongo DB Dev environment.
+ * Note: Should not use write operaions on this none of the db's (mongo dev).
  * @author vladvoicu
  *
  */
 public class MongoDevConnector {
 	
-	private MongoClient mongoClient;
+	private MongoClient mongoDevClient;
 	private DB workingDB;
 	
 	public MongoDevConnector() throws UnknownHostException{
-		mongoClient = new MongoClient(Constants.Mule_MONGO_URL, Constants.Mule_MONGO_PORT);
+		mongoDevClient = new MongoClient(Constants.Mule_MONGO_URL, Constants.Mule_MONGO_PORT);
 	}
 	
 	public void displayAllDataSets() throws UnknownHostException {
-		List<String> dbs = mongoClient.getDatabaseNames();
+		List<String> dbs = mongoDevClient.getDatabaseNames();
 		for (String dbme : dbs) {
 			System.out.println("DBName: " + dbme);
 		}
 	}
 	
 	public void displayCollectionNames() throws NumberFormatException, UnknownHostException{
-		workingDB = mongoClient.getDB(Constants.Mule_MONGO_DB);		
+		workingDB = mongoDevClient.getDB(Constants.Mule_MONGO_DB);		
 		Set<String> dbCollectionNames = workingDB.getCollectionNames();
 		
 		for(String nameNow:dbCollectionNames){

@@ -1,4 +1,4 @@
-package com.helios.services.dealer.france;
+package com.helios.services.dealers.france;
 
 import java.util.Date;
 

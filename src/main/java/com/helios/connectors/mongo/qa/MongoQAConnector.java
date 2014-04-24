@@ -1,11 +1,11 @@
-package com.helios.persistance;
+package com.helios.connectors.mongo.qa;
 
 import java.net.UnknownHostException;
 import java.util.List;
 import java.util.Set;
 
-import com.helios.services.dealer.france.FranceConstants;
-import com.helios.services.dealer.france.datamodels.DealerModel;
+import com.helios.services.dealers.france.FranceConstants;
+import com.helios.services.dealers.france.datamodels.DealerModel;
 import com.helios.tools.Constants;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -14,17 +14,24 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 
-public class MongoUtils {
 
-	protected static MongoClient mongoClient;
+/**
+ * This file is should write test data to a MongoDb.
+ * Note: On the MongoDevConnector should not perform write data operations.
+ * @author vladvoicu
+ *
+ */
+public class MongoQAConnector {
+
+	protected static MongoClient mongoQaClient;
 	protected static DB workingDB;
 
-	public MongoUtils() throws UnknownHostException {
-		mongoClient = new MongoClient(Constants.TDD_MONGO_URL, Constants.TDD_MONGO_PORT);
+	public MongoQAConnector() throws UnknownHostException {
+		mongoQaClient = new MongoClient(Constants.TDD_MONGO_URL, Constants.TDD_MONGO_PORT);
 	}
 
 	public void displayCollectionNames() throws NumberFormatException, UnknownHostException {
-		workingDB = mongoClient.getDB(Constants.TDD_MONGO_DB);
+		workingDB = mongoQaClient.getDB(Constants.TDD_MONGO_DB);
 		Set<String> dbCollectionNames = workingDB.getCollectionNames();
 
 		for (String nameNow : dbCollectionNames) {
@@ -51,7 +58,7 @@ public class MongoUtils {
 	}
 
 	public long hasEntries(String name) {
-		workingDB = mongoClient.getDB(name);
+		workingDB = mongoQaClient.getDB(name);
 		long result = 0;
 
 		if (workingDB.getCollection(FranceConstants.DEALER_TAG).count() >= 0) {
@@ -65,7 +72,7 @@ public class MongoUtils {
 
 	public static void saveFranceDealer(DealerModel dModel, String testName) {
 
-		workingDB = mongoClient.getDB(testName);
+		workingDB = mongoQaClient.getDB(testName);
 
 		DBCollection table = workingDB.getCollection(FranceConstants.DEALER_TAG);
 		BasicDBObject document = new BasicDBObject();
@@ -81,7 +88,7 @@ public class MongoUtils {
 	public static DealerModel getFranceDealear(String testName) {
 		DBObject dbObject = null;
 		DealerModel result = new DealerModel();
-		workingDB = mongoClient.getDB(testName);
+		workingDB = mongoQaClient.getDB(testName);
 		// DBCollection table =
 		// workingDB.getCollection(FranceConstants.DEALER_TAG);
 		DBCursor cursor = workingDB.getCollection(FranceConstants.DEALER_TAG).find();

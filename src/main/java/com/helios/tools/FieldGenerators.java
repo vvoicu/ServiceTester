@@ -9,16 +9,10 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-
 public final class FieldGenerators {
-	
-	
 
 	public static SecureRandom random = new SecureRandom();
-	
 
-	
-	
 	public static enum Mode {
 		ALPHA, ALPHANUMERIC, NUMERIC, ALPHANUMERICSCHAR
 	}

@@ -1,4 +1,4 @@
-package com.helios.tools;
+package com.helios.tools.utils;
 
 import static org.junit.Assert.assertTrue;
 
@@ -9,6 +9,11 @@ import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
 import org.apache.http.util.EntityUtils;
 
+/**
+ * This class will be used to assert dev db data is persisted. Only read operations should be performed on the dev db.
+ * @author vladvoicu
+ *
+ */
 public class ValidatorUtils {
 
 	public void assertMessage(String msgValidatrion, String response) throws IOException {

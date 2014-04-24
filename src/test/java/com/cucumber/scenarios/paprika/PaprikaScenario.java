@@ -5,7 +5,7 @@ import java.io.IOException;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 
-import com.helios.connectors.HttpMainProtocol;
+import com.helios.connectors.http.HttpMainProtocol;
 import com.helios.services.paprika.PaprikaModel;
 import com.helios.services.paprika.PaprikaValidator;
 

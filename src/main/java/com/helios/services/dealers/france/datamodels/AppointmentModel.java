@@ -1,10 +1,10 @@
-package com.helios.services.dealer.france.datamodels;
+package com.helios.services.dealers.france.datamodels;
 
 import java.util.Random;
 
 import org.apache.commons.lang.RandomStringUtils;
 
-import com.helios.services.dealer.france.FranceConstants;
+import com.helios.services.dealers.france.FranceConstants;
 import com.helios.tools.FieldGenerators;
 import com.helios.tools.FieldGenerators.Mode;
 

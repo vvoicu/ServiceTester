@@ -12,10 +12,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.helios.persistance.MongoUtils;
-import com.helios.services.dealer.france.FranceDealerFormatter;
-import com.helios.services.dealer.france.datamodels.DealerModel;
-import com.helios.tools.FormatterUtils;
+import com.helios.connectors.mongo.qa.MongoQAConnector;
+import com.helios.services.dealers.france.FranceDealerFormatter;
+import com.helios.services.dealers.france.datamodels.DealerModel;
+import com.helios.tools.utils.FormatterUtils;
 import com.junit.BaseTest;
 
 
@@ -34,11 +34,11 @@ public class FranceDealearAsyncOneTest extends BaseTest{
 //		System.out.println(mongoUtilus.hasEntries(this.getClass().getSimpleName()));
 		
 		if(mongoUtilus.hasEntries(this.getClass().getSimpleName()) > 0){
-			dModel = MongoUtils.getFranceDealear(this.getClass().getSimpleName());
+			dModel = MongoQAConnector.getFranceDealear(this.getClass().getSimpleName());
 			
 		}else{
 			dModel = new DealerModel(true);
-			MongoUtils.saveFranceDealer(dModel, this.getClass().getSimpleName());
+			MongoQAConnector.saveFranceDealer(dModel, this.getClass().getSimpleName());
 		}
 		
 	}

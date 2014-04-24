@@ -1,21 +1,20 @@
-package com.helios.services.dealer.france;
+package com.helios.services.dealers.france;
 
 import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
 
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import com.helios.services.dealer.france.datamodels.AddressModel;
-import com.helios.services.dealer.france.datamodels.AppointmentModel;
-import com.helios.services.dealer.france.datamodels.DealerModel;
-import com.helios.services.dealer.france.datamodels.ServiceModel;
-import com.helios.tools.FormatterUtils;
+import com.helios.services.dealers.france.datamodels.AddressModel;
+import com.helios.services.dealers.france.datamodels.AppointmentModel;
+import com.helios.services.dealers.france.datamodels.DealerModel;
+import com.helios.services.dealers.france.datamodels.ServiceModel;
+import com.helios.tools.utils.FormatterUtils;
 
 
 public class FranceDealerFormatter extends FormatterUtils {

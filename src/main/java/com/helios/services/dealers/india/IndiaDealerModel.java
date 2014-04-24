@@ -1,4 +1,4 @@
-package com.helios.services.dealer.india;
+package com.helios.services.dealers.india;
 
 public class IndiaDealerModel {
 
