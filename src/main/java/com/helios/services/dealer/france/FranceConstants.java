@@ -8,10 +8,13 @@ import java.util.Date;
  * @author vladvoicu
  *
  */
+
 public class FranceConstants {
 	
 	//Custom Data
+	@SuppressWarnings("deprecation")
 	public static Date RANDOM_DATE_MIN = new Date("1/12/2014");
+	@SuppressWarnings("deprecation")
 	public static Date RANDOM_DATE_MAX = new Date("20/12/2015");
 
 	public static String[] IS_TRUE_OR_FALSE = { "true", "false"};

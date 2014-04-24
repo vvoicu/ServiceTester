@@ -1,4 +1,4 @@
-package com.helios.connectors;
+package com.helios.connectors.mongo;
 
 import java.net.UnknownHostException;
 import java.util.List;
@@ -10,30 +10,34 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 
+
+/**
+ * MongoConnector Will handle all transactions with the Mule Mongo DB.
+ * @author vladvoicu
+ *
+ */
 public class MongoConnector {
 	
-	MongoClient mongoClient;
+	private MongoClient mongoClient;
 	private DB workingDB;
 	
-
+	public MongoConnector() throws UnknownHostException{
+		mongoClient = new MongoClient(Constants.Mule_MONGO_URL, Constants.Mule_MONGO_PORT);
+	}
+	
 	public void displayAllDataSets() throws UnknownHostException {
-		mongoClient = new MongoClient("172.22.9.40", 27017);
-//		workingDB = mongoClient.getDB(Constants.MONGO_DB);
-
 		List<String> dbs = mongoClient.getDatabaseNames();
 		for (String dbme : dbs) {
-			System.out.println(dbme);
+			System.out.println("DBName: " + dbme);
 		}
 	}
 	
 	public void displayCollectionNames() throws NumberFormatException, UnknownHostException{
-		mongoClient = new MongoClient("172.22.9.40", 27017);
-		workingDB = mongoClient.getDB(Constants.MONGO_DB);
-		
+		workingDB = mongoClient.getDB(Constants.Mule_MONGO_DB);		
 		Set<String> dbCollectionNames = workingDB.getCollectionNames();
 		
 		for(String nameNow:dbCollectionNames){
-			System.out.println("Name Now: " + nameNow);
+			System.out.println("Collection Now: " + nameNow);
 			DBCollection collectionNow = workingDB.getCollection(nameNow);
 			displayCollection(collectionNow);
 		}
@@ -41,9 +45,7 @@ public class MongoConnector {
 	
 	
 	public void displayCollection(DBCollection collectionNow){
-		
 		List<DBObject> list = collectionNow.getIndexInfo();
-
 		for (DBObject o : list) {
 		   System.out.println(o);
 		}

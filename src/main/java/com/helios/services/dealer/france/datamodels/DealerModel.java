@@ -10,7 +10,7 @@ import com.helios.services.dealer.france.FranceConstants;
 import com.helios.tools.FieldGenerators;
 import com.helios.tools.FieldGenerators.Mode;
 
-public class DealerModel {
+public class DealerModel{
 
 	private String bir_id;
 	private String country;

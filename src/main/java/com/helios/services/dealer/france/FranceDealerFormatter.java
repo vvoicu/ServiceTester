@@ -1,7 +1,6 @@
 package com.helios.services.dealer.france;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
