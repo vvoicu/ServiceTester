@@ -18,7 +18,7 @@ import org.json.JSONObject;
 import com.helios.tools.Constants;
 
 @SuppressWarnings("deprecation")
-public class MainProtocol {
+public class HttpMainProtocol {
 
 	public DefaultHttpClient httpclient = new DefaultHttpClient();
 	public HttpClient client = new DefaultHttpClient();
@@ -27,7 +27,7 @@ public class MainProtocol {
 	public HttpEntity entity;
 	public int i = 0;
 
-	public MainProtocol() {
+	public HttpMainProtocol() {
 		httpclient = new DefaultHttpClient();
 		client = new DefaultHttpClient();
 	}

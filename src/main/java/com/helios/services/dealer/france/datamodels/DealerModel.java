@@ -11,6 +11,8 @@ import com.helios.tools.FieldGenerators;
 import com.helios.tools.FieldGenerators.Mode;
 
 public class DealerModel{
+	
+	
 
 	private String bir_id;
 	private String country;
@@ -18,10 +20,13 @@ public class DealerModel{
 	private String has_fixedprice;
 	private String distance;
 
-	private List<AddressModel> addressesList;
-	private List<ServiceModel> serviceList;
-	private List<AppointmentModel> appointmentList;
-	private List<BrandModel> brandList;
+	private List<AddressModel> addressesList = new ArrayList<AddressModel>();
+	private List<ServiceModel> serviceList = new ArrayList<ServiceModel>();
+	private List<AppointmentModel> appointmentList = new ArrayList<AppointmentModel>();
+	private List<BrandModel> brandList = new ArrayList<BrandModel>();
+	
+	public DealerModel() {
+	}
 
 	public DealerModel(boolean isValid) throws Exception {
 		setBir_id(isValid);
@@ -31,22 +36,20 @@ public class DealerModel{
 		setDistance(isValid);
 
 		AddressModel addressItem = new AddressModel(isValid);
-		addressesList = new ArrayList<AddressModel>();
 		addressesList.add(addressItem);
 		
 		AppointmentModel appointmentItem = new AppointmentModel(isValid);
-		appointmentList = new ArrayList<AppointmentModel>();
 		appointmentList.add(appointmentItem);
 		
 		ServiceModel serviceItem = new ServiceModel(isValid);
-		serviceList = new ArrayList<ServiceModel>();
 		serviceList.add(serviceItem);
 		
 		BrandModel brandItem = new BrandModel(isValid);
-		brandList = new ArrayList<BrandModel>();
 		brandList.add(brandItem);
 
 	}
+
+
 
 	public String getBir_id() {
 		return bir_id;

@@ -1,53 +1,51 @@
 package com.junit.dealer;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
+import java.io.IOException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.util.EntityUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import org.w3c.dom.Document;
 
-import com.helios.connectors.mongo.MongoDevConnector;
+import com.helios.persistance.MongoUtils;
 import com.helios.services.dealer.france.FranceDealerFormatter;
 import com.helios.services.dealer.france.datamodels.DealerModel;
 import com.helios.tools.FormatterUtils;
-import com.helios.tools.ValidatorUtils;
 import com.junit.BaseTest;
 
+
 @RunWith(JUnit4.class)
-public class FranceDealerTest extends BaseTest{
+public class FranceDealearAsyncOneTest extends BaseTest{
 	
-//	List<Document> docList= new ArrayList<Document>();
-	public FranceDealerFormatter formatter= new FranceDealerFormatter();
-	
-	//Input data
-//	public String url = "http://localhost:8888";
 	public String url = "http://localhost:8081";	
 	public DealerModel dModel;
+	public FranceDealerFormatter formatter= new FranceDealerFormatter();
 	
-	
-
 	@Before
 	public void dataSetup() throws Exception{
 		
-		dModel = new DealerModel(true);
+//		System.out.println(mongoUtilus.hasEntries(this.getClass().getSimpleName()));
+//		System.out.println(this.getClass().getSimpleName());
+//		System.out.println(mongoUtilus.hasEntries(this.getClass().getSimpleName()));
 		
-		//Data Setup for the message to be delivered
-//		message = new PaprikaModel(true);
-//		message.setIsPresent("true");
+		if(mongoUtilus.hasEntries(this.getClass().getSimpleName()) > 0){
+			dModel = MongoUtils.getFranceDealear(this.getClass().getSimpleName());
+			
+		}else{
+			dModel = new DealerModel(true);
+			MongoUtils.saveFranceDealer(dModel, this.getClass().getSimpleName());
+		}
+		
 	}
 	
 	@Test
-	public void verifyFranceDealer() throws Exception{
+	public void testDataPersistanceRule() throws Exception{
 		
-				
-//		HttpResponse responseMessage = protocol.sendGet(url, message.toString());
 		String myMessage = FormatterUtils.printResutls(formatter.generateFranceData(dModel));
 //		docList.add(formatter.generateFranceData(dModel));
 //		String myMessage = FormatterUtils.printResutls(formatter.generateDocumentRoot(docList));
@@ -65,6 +63,10 @@ public class FranceDealerTest extends BaseTest{
 			
 		mongoDev.displayAllDataSets();
 		mongoDev.displayCollectionNames();
+		
+		System.out.println(dModel.getDealer_name());
 	}
 
+	
+	
 }

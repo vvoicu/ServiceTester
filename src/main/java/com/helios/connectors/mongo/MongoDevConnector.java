@@ -16,12 +16,12 @@ import com.mongodb.MongoClient;
  * @author vladvoicu
  *
  */
-public class MongoConnector {
+public class MongoDevConnector {
 	
 	private MongoClient mongoClient;
 	private DB workingDB;
 	
-	public MongoConnector() throws UnknownHostException{
+	public MongoDevConnector() throws UnknownHostException{
 		mongoClient = new MongoClient(Constants.Mule_MONGO_URL, Constants.Mule_MONGO_PORT);
 	}
 	

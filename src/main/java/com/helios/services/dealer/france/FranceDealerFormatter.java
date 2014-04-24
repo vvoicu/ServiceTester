@@ -164,11 +164,11 @@ public class FranceDealerFormatter extends FormatterUtils {
 		distance.appendChild(doc.createTextNode(model.getDistance()));
 		dealerRoot.appendChild(distance);
 
-		try {
-			printResutls(doc);
-		} catch (TransformerException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			printResutls(doc);
+//		} catch (TransformerException e) {
+//			e.printStackTrace();
+//		}
 		return doc;
 
 	}

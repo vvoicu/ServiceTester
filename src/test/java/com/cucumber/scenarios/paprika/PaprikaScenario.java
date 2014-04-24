@@ -5,7 +5,7 @@ import java.io.IOException;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 
-import com.helios.connectors.MainProtocol;
+import com.helios.connectors.HttpMainProtocol;
 import com.helios.services.paprika.PaprikaModel;
 import com.helios.services.paprika.PaprikaValidator;
 
@@ -17,7 +17,7 @@ import cucumber.api.java.en.When;
 
 public class PaprikaScenario {
 
-	public MainProtocol protocol = new MainProtocol();
+	public HttpMainProtocol protocol = new HttpMainProtocol();
 	public PaprikaValidator serviceActions = new PaprikaValidator();
 	public PaprikaModel message;
 	public String response;
