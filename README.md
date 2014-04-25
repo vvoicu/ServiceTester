@@ -5,6 +5,7 @@ Test application services with java and junit or cucumber.
 For a proper setup you will need a MongoDb; the default install will suffice. 
 
 Run the FranceDealerAsyncTest it has a complete flow.
+Note: You have to run it against a servince. If you dont have one, install Fiddler and run it against localhost:8888
 
 
 Environment Setup:
