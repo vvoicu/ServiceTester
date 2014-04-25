@@ -5,7 +5,7 @@ import com.helios.tools.FieldGenerators.Mode;
 
 public class AddressModel {
 
-	/**
+	/**sample
 	 * <complementAddressLine>96 R AMELOT</complementAddressLine> <city>PARIS
 	 * 11</city> <country>FR</country> <post_code>75011</post_code>
 	 * <telephone>01 49 23 55 55</telephone> <fax>01 49 23 54 20</fax>

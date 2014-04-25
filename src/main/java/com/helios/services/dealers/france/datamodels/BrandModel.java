@@ -15,8 +15,8 @@ public class BrandModel {
 	private String receiveLead;
 	private String type;
 	private String imgURL;
-	
-	public BrandModel(boolean isValid) throws Exception{
+
+	public BrandModel(boolean isValid) throws Exception {
 		setBrandTag(isValid);
 		setReceiveLead(isValid);
 		setType(isValid);
@@ -92,7 +92,7 @@ public class BrandModel {
 	public void setImgURL(String imgURL) {
 		this.imgURL = imgURL;
 	}
-	
+
 	public void setImgURL(boolean isValid) throws Exception {
 		String value;
 
@@ -100,7 +100,7 @@ public class BrandModel {
 			value = "http://" + FieldGenerators.generateRandomString(8, Mode.ALPHANUMERIC) + "/One.jpg";
 		else
 			value = FieldGenerators.generateRandomString(18, Mode.ALPHANUMERICSCHAR);
-		
+
 		this.imgURL = value;
 	}
 }

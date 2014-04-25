@@ -11,8 +11,8 @@ public class ServiceModel {
 	private String name;
 	private String id;
 	private String imgUrl;
-	
-	public ServiceModel(boolean isValid) throws Exception{
+
+	public ServiceModel(boolean isValid) throws Exception {
 		setName(isValid);
 		setId(isValid);
 		setImgUrl(isValid);

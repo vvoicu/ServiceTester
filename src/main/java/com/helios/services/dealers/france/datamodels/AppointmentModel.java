@@ -14,8 +14,8 @@ public class AppointmentModel {
 	private String day;
 	private String start;
 	private String end;
-	
-	public AppointmentModel(boolean isValid) throws Exception{
+
+	public AppointmentModel(boolean isValid) throws Exception {
 		setAvailable(isValid);
 		setDay(isValid);
 		setStart(isValid);

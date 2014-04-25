@@ -89,15 +89,11 @@ public class MongoQAConnector {
 		DBObject dbObject = null;
 		DealerModel result = new DealerModel();
 		workingDB = mongoQaClient.getDB(testName);
-		// DBCollection table =
-		// workingDB.getCollection(FranceConstants.DEALER_TAG);
 		DBCursor cursor = workingDB.getCollection(FranceConstants.DEALER_TAG).find();
 
 		try {
 			while (cursor.hasNext()) {
-				// System.out.println(cursor.next());
 				dbObject = cursor.next();
-
 				System.out.println("DDIT : " + dbObject.get(FranceConstants.BIR_ID_TAG).toString());
 				result.setBir_id(dbObject.get(FranceConstants.BIR_ID_TAG).toString());
 				result.setCountry(dbObject.get(FranceConstants.COUNTRY_TAG).toString());

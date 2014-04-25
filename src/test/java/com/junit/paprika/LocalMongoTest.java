@@ -5,7 +5,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import com.helios.connectors.mongo.qa.MongoQAConnector;
-import com.helios.services.dealers.france.FranceDealerPersist;
 import com.helios.services.dealers.france.datamodels.DealerModel;
 
 @RunWith(JUnit4.class)
@@ -16,7 +15,7 @@ public class LocalMongoTest {
 		MongoQAConnector mongoUtilus = new MongoQAConnector();
 		
 		DealerModel dmodel = new DealerModel(true);
-		FranceDealerPersist.saveFranceDealer(dmodel, this.getClass().getName());
+		MongoQAConnector.saveFranceDealer(dmodel, this.getClass().getName());
 		mongoUtilus.displayCollectionNames();
 //		FranceDealerPersist.displayItem();
 	}

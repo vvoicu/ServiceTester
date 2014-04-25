@@ -11,14 +11,14 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import com.helios.services.paprika.PaprikaModel;
-import com.helios.services.paprika.PaprikaValidator;
+import com.helios.tools.utils.ValidatorUtils;
 import com.junit.BaseTest;
 
 
 @RunWith(JUnit4.class)
 public class PaprikaTest extends BaseTest {
 
-	public PaprikaValidator serviceActions = new PaprikaValidator();
+	public ValidatorUtils serviceActions = new ValidatorUtils();
 	public String response;
 	
 	//Input data

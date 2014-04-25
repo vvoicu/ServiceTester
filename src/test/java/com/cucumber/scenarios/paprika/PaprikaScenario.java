@@ -7,7 +7,7 @@ import org.apache.http.util.EntityUtils;
 
 import com.helios.connectors.http.HttpMainProtocol;
 import com.helios.services.paprika.PaprikaModel;
-import com.helios.services.paprika.PaprikaValidator;
+import com.helios.tools.utils.ValidatorUtils;
 
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
@@ -18,7 +18,7 @@ import cucumber.api.java.en.When;
 public class PaprikaScenario {
 
 	public HttpMainProtocol protocol = new HttpMainProtocol();
-	public PaprikaValidator serviceActions = new PaprikaValidator();
+	public ValidatorUtils serviceActions = new ValidatorUtils();
 	public PaprikaModel message;
 	public String response;
 
@@ -42,17 +42,17 @@ public class PaprikaScenario {
 		HttpResponse responseMessage = protocol.sendGet(url, message.toString());
 		response = EntityUtils.toString(responseMessage.getEntity());
 	}
-	
+
 	@Then("^the response contains \"(.*?)\"$")
 	public void the_response_contains(String msgValidatrion) throws Throwable {
-		//Validate message
+		// Validate message
 		serviceActions.assertMessage(msgValidatrion, response);
 	}
-	
+
 	@After
 	public void closeDriver() throws IllegalStateException, IOException {
-		//Write response to xml file - for Debugging
-		protocol.writeToFile(response,"PaprikaTest");
+		// Write response to xml file - for Debugging
+		protocol.writeToFile(response, "PaprikaTest");
 		protocol.close();
 	}
 

@@ -10,9 +10,7 @@ import com.helios.services.dealers.france.FranceConstants;
 import com.helios.tools.FieldGenerators;
 import com.helios.tools.FieldGenerators.Mode;
 
-public class DealerModel{
-	
-	
+public class DealerModel {
 
 	private String bir_id;
 	private String country;
@@ -24,7 +22,7 @@ public class DealerModel{
 	private List<ServiceModel> serviceList = new ArrayList<ServiceModel>();
 	private List<AppointmentModel> appointmentList = new ArrayList<AppointmentModel>();
 	private List<BrandModel> brandList = new ArrayList<BrandModel>();
-	
+
 	public DealerModel() {
 	}
 
@@ -37,19 +35,17 @@ public class DealerModel{
 
 		AddressModel addressItem = new AddressModel(isValid);
 		addressesList.add(addressItem);
-		
+
 		AppointmentModel appointmentItem = new AppointmentModel(isValid);
 		appointmentList.add(appointmentItem);
-		
+
 		ServiceModel serviceItem = new ServiceModel(isValid);
 		serviceList.add(serviceItem);
-		
+
 		BrandModel brandItem = new BrandModel(isValid);
 		brandList.add(brandItem);
 
 	}
-
-
 
 	public String getBir_id() {
 		return bir_id;

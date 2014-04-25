@@ -5,9 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 
-
-
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -25,7 +22,7 @@ public class HttpMainProtocol {
 	public DefaultHttpClient httpclient = new DefaultHttpClient();
 	public HttpClient client = new DefaultHttpClient();
 	public boolean validateResponseStatusCode = true;
-	
+
 	public HttpEntity entity;
 	public int i = 0;
 
@@ -51,7 +48,7 @@ public class HttpMainProtocol {
 		HttpGetWithEntity myGet = new HttpGetWithEntity();
 		URI uri = URI.create(url);
 		myGet.setURI(uri);
-//		myGet.setHeader("Content-Type", "text/json");
+		// myGet.setHeader("Content-Type", "text/json");
 		myGet.setHeader("Content-Type", "text/xml");
 		myGet.setEntity(new StringEntity(message, "UTF8"));
 
@@ -60,27 +57,26 @@ public class HttpMainProtocol {
 		entity = new StringEntity(message, "UTF8");
 
 		HttpResponse response = httpclient.execute(myGet);
-//		HttpResponse response = client.execute(myGet);
-
+		// HttpResponse response = client.execute(myGet);
 
 		System.out.println("Response Code : " + response.getStatusLine());
-		
-		
+
 		return response;
 	}
 
 	/**
 	 * Write xml style, message Entity from given response;
+	 * 
 	 * @param response
 	 * @throws IllegalStateException
 	 * @throws IOException
 	 */
-	public void writeToFile(HttpResponse response,String tc) throws IllegalStateException, IOException {
-		
+	public void writeToFile(HttpResponse response, String tc) throws IllegalStateException, IOException {
+
 		InputStream is = response.getEntity().getContent();
-		
+
 		String timeNow = String.valueOf(System.currentTimeMillis());
-		String filePath = Constants.REPORT_FOLDER + timeNow + "_" +  tc + "_ReceivedMessage.xml";
+		String filePath = Constants.REPORT_FOLDER + timeNow + "_" + tc + "_ReceivedMessage.xml";
 		FileOutputStream fos = new FileOutputStream(filePath);
 		int inByte;
 		while ((inByte = is.read()) != -1)
@@ -88,26 +84,25 @@ public class HttpMainProtocol {
 		is.close();
 		fos.close();
 	}
+
 	/**
 	 * Write xml style, message Entity from given response;
+	 * 
 	 * @param response
 	 * @throws IllegalStateException
 	 * @throws IOException
 	 */
-	public void writeToFile(String response,String tc) throws IllegalStateException, IOException {
-		
-//		InputStream is = response.getEntity().getContent();
-		
+	public void writeToFile(String response, String tc) throws IllegalStateException, IOException {
+
 		String timeNow = String.valueOf(System.currentTimeMillis());
-		String filePath = Constants.REPORT_FOLDER + timeNow + "_" +  tc + "_ReceivedMessage.xml";
+		String filePath = Constants.REPORT_FOLDER + timeNow + "_" + tc + "_ReceivedMessage.xml";
 		FileOutputStream fos = new FileOutputStream(filePath);
 		byte[] contentInBytes = response.getBytes();
-		 
+
 		fos.write(contentInBytes);
 		fos.flush();
 		fos.close();
 	}
-	
 
 	public void close() {
 		httpclient.close();

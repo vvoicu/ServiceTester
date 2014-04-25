@@ -7,13 +7,14 @@ import javax.xml.transform.TransformerException;
 import org.w3c.dom.Document;
 
 /**
- * This will transform a Document, expected xml, into a String.
- * Useful to integrate with other systems.
+ * This will transform a Document, expected xml, into a String. Useful to
+ * integrate with other systems.
+ * 
  * @author vladvoicu
- *
+ * 
  */
 public class FormatterUtils {
-	
+
 	@SuppressWarnings("deprecation")
 	public static String printResutls(Document doc) throws TransformerException, IOException {
 
@@ -26,7 +27,7 @@ public class FormatterUtils {
 		org.apache.xml.serialize.XMLSerializer serializer = new org.apache.xml.serialize.XMLSerializer(ps, of);
 		// As a DOM Serializer
 		serializer.asDOMSerializer();
-		serializer.serialize(doc); 
+		serializer.serialize(doc);
 
 		System.out.println(data.toString());
 		return data.toString();

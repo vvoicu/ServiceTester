@@ -16,26 +16,28 @@ import com.helios.services.dealers.france.datamodels.DealerModel;
 import com.helios.services.dealers.france.datamodels.ServiceModel;
 import com.helios.tools.utils.FormatterUtils;
 
-
 public class FranceDealerFormatter extends FormatterUtils {
 
-	// Will generate a dealer - France Type
+	/**
+	 *  Will generate a dealer - France Type - XML
+	 * @param model
+	 * @return
+	 * @throws ParserConfigurationException
+	 * @throws IOException
+	 */
 	public Document generateFranceData(DealerModel model) throws ParserConfigurationException, IOException {
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-		
-
 
 		// root element
 		Document doc = docBuilder.newDocument();
-		
+
 		Element searchResults = doc.createElement(FranceConstants.DOC_ROOT);
 		doc.appendChild(searchResults);
-		
+
 		Element dealersContainer = doc.createElement(FranceConstants.DOC_DEALERS);
 		searchResults.appendChild(dealersContainer);
-		
-		
+
 		Element dealerRoot = doc.createElement(FranceConstants.DEALER_TAG);
 		dealersContainer.appendChild(dealerRoot);
 
@@ -43,7 +45,7 @@ public class FranceDealerFormatter extends FormatterUtils {
 		birID.appendChild(doc.createTextNode(model.getBir_id()));
 		dealerRoot.appendChild(birID);
 
-		// TODO addresses - DONE
+		// addresses - DONE
 		Element addressContainer = doc.createElement(FranceConstants.ADR_TAG);
 		dealerRoot.appendChild(addressContainer);
 
@@ -95,7 +97,7 @@ public class FranceDealerFormatter extends FormatterUtils {
 		fixedPrice.appendChild(doc.createTextNode(model.getHas_fixedprice()));
 		dealerRoot.appendChild(fixedPrice);
 
-		// TODO services - Done
+		// services - Done
 
 		Element servicesContainer = doc.createElement(FranceConstants.SERVICES_TAG);
 		dealerRoot.appendChild(servicesContainer);
@@ -123,7 +125,7 @@ public class FranceDealerFormatter extends FormatterUtils {
 			}
 		}
 
-		// TODO sbol
+		// sbol
 		Element sbolRoot = doc.createElement(FranceConstants.SBOL_TAG);
 		dealerRoot.appendChild(sbolRoot);
 
@@ -163,11 +165,6 @@ public class FranceDealerFormatter extends FormatterUtils {
 		distance.appendChild(doc.createTextNode(model.getDistance()));
 		dealerRoot.appendChild(distance);
 
-//		try {
-//			printResutls(doc);
-//		} catch (TransformerException e) {
-//			e.printStackTrace();
-//		}
 		return doc;
 
 	}

@@ -41,7 +41,7 @@ public class PaprikaModel {
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	public void setIsPresent(String isPresent) {
 		this.isPresent = isPresent;
 	}

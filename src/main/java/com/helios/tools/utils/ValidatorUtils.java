@@ -10,9 +10,11 @@ import org.apache.http.ParseException;
 import org.apache.http.util.EntityUtils;
 
 /**
- * This class will be used to assert dev db data is persisted. Only read operations should be performed on the dev db.
+ * This class will be used to assert dev db data is persisted. Only read
+ * operations should be performed on the dev db.
+ * 
  * @author vladvoicu
- *
+ * 
  */
 public class ValidatorUtils {
 
@@ -28,11 +30,12 @@ public class ValidatorUtils {
 		System.out.println("Response: " + res);
 		assertTrue("Failure: Response message is invalid: " + res, res.contains(desiredMessage));
 	}
+
 	public void printMessage(HttpResponse response) throws ParseException, IOException {
 		HttpEntity entity = response.getEntity();
 		String res = null;
 		res = EntityUtils.toString(entity);
-		
+
 		System.out.println("Response: " + res);
 	}
 
