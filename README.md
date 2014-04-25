@@ -9,6 +9,10 @@ Note: You have to run it against a servince.
 
 If you dont have one, install Fiddler and run it against localhost:8888
 
+Note2: You can also export the whole project to a jar. There is a jMeter xml sample in the java/resources folder.
+
+So you can check performance through jMeter and use the whole project as you need. (hope this helps someone)
+
 
 Environment Setup:
 
