@@ -35,6 +35,7 @@ public class FranceDealearAsyncOneTest extends BaseTest{
 			
 		}else{
 			dModel = new DealerModel(true);
+			MongoQAConnector.saveFranceDealer(dModel, this.getClass().getSimpleName());
 		}
 		
 	}
@@ -70,7 +71,7 @@ public class FranceDealearAsyncOneTest extends BaseTest{
 
 	@After
 	public void saveToQaData(){
-		MongoQAConnector.saveFranceDealer(dModel, this.getClass().getSimpleName());
+//		MongoQAConnector.saveFranceDealer(dModel, this.getClass().getSimpleName());
 
 	}
 	
