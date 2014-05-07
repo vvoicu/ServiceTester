@@ -14,7 +14,7 @@ public final class FieldGenerators {
 	public static SecureRandom random = new SecureRandom();
 
 	public static enum Mode {
-		ALPHA, ALPHANUMERIC, NUMERIC, ALPHANUMERICSCHAR
+		ALPHA_CAPS, ALPHA, ALPHANUMERIC, NUMERIC, ALPHANUMERICSCHAR
 	}
 
 	public static Integer getRandomInteger(int max) {
@@ -33,6 +33,10 @@ public final class FieldGenerators {
 		String characters = "";
 
 		switch (mode) {
+
+		case ALPHA_CAPS:
+			characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			break;
 
 		case ALPHA:
 			characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -81,6 +85,21 @@ public final class FieldGenerators {
 
 	}
 
+	public static String getRandomDateBetweenDatesRenaultFormat(Date initialDate, Date finalDate) {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		String date = sdf.format(new Date());
+		String dateString;
+
+		Date result = FieldGenerators.getRandomDatesBetweenDates(initialDate, finalDate);
+
+		date = sdf.format(result);
+		dateString = String.valueOf(date);
+
+		return dateString;
+
+	}
+
 	public static Date getRandomDatesBetweenDates(Date initialDate, Date finalDate) {
 		List<Date> dates = getListOfDatesBetweenDates(initialDate, finalDate);
 		return getRandomItemFromList(dates);
@@ -102,4 +121,5 @@ public final class FieldGenerators {
 		SecureRandom random = new SecureRandom();
 		return list.get(random.nextInt(list.size()));
 	}
+
 }
