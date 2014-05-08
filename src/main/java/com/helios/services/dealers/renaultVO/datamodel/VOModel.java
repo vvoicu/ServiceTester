@@ -6,6 +6,8 @@ import java.util.List;
 import com.helios.tools.FieldGenerators;
 import com.helios.tools.FieldGenerators.Mode;
 
+// TO DOOOOOO !!!!!! - add setters for valid/invalid fields (once we confirm what is considered valid and what not)
+
 public class VOModel {
 
 	private String transactionType;
