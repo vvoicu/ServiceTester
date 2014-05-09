@@ -6,6 +6,7 @@ import java.util.Set;
 
 import com.helios.services.dealers.france.FranceConstants;
 import com.helios.services.dealers.france.datamodels.DealerModel;
+import com.helios.services.dealers.renaultVO.datamodel.VOModel;
 import com.helios.tools.Constants;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -25,6 +26,7 @@ public class MongoQAConnector {
 
 	protected static MongoClient mongoQaClient;
 	protected static DB workingDB;
+	protected static DB db;
 
 	public MongoQAConnector() throws UnknownHostException {
 		mongoQaClient = new MongoClient(Constants.QA_MONGO_URL, Constants.QA_MONGO_PORT);
@@ -108,4 +110,38 @@ public class MongoQAConnector {
 		return result;
 	}
 
+	// ---------------------- tibi play ----------------------------
+
+	public static void writeInfoInMongoDB(VOModel dModel, String dbName) {
+
+		db = mongoQaClient.getDB(dbName);
+
+		// DBCollection dbCollection = db.getCollection("Stock_VO");
+		DBCollection dbCollection2 = db.getCollection("HeaderInfo");
+		BasicDBObject document = new BasicDBObject();
+		document.put("NbVO", "30239");
+		document.put("CountryCode", "fr");
+		dbCollection2.insert(document);
+
+	}
+
+	public static VOModel readInfoFromMongoDB(String dbName) {
+		DBObject dbObject = null;
+		VOModel result = new VOModel();
+		db = mongoQaClient.getDB(dbName);
+		DBCursor dbCursor = db.getCollection("HeaderInfo").find();
+
+		try {
+			while (dbCursor.hasNext()) {
+				dbObject = dbCursor.next();
+				System.out.println("DDIT : " + dbObject.get("NbVO").toString());
+				System.out.println("DDIT : " + dbObject.get("CountryCode").toString());
+				// result.setBir_id(dbObject.get(FranceConstants.BIR_ID_TAG).toString());
+			}
+		} finally {
+			dbCursor.close();
+		}
+
+		return result;
+	}
 }

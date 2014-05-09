@@ -51,6 +51,9 @@ public class VOModel {
 	private List<EquipmentModel> equipmentList = new ArrayList<EquipmentModel>();
 	private HeaderInfoModel headerInfoModel;
 
+	public VOModel() {
+	}
+
 	/**
 	 * Generate all fields with one param - valid or invalid data
 	 * 
@@ -109,6 +112,14 @@ public class VOModel {
 
 	public List<EquipmentModel> getEquipmentList() {
 		return equipmentList;
+	}
+
+	public void addEquipmentToList(EquipmentModel eModel) {
+		equipmentList.add(eModel);
+	}
+
+	public void setEquipmentList(List<EquipmentModel> eList) {
+		equipmentList = eList;
 	}
 
 	public String getTransactionType() {
@@ -851,11 +862,4 @@ public class VOModel {
 		this.colorFull = value;
 	}
 
-	public void addEquipmentToList(EquipmentModel eModel) {
-		equipmentList.add(eModel);
-	}
-
-	public void setEquipmentList(List<EquipmentModel> eList) {
-		equipmentList = eList;
-	}
 }
