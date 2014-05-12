@@ -22,13 +22,14 @@ public class RenaultVOConstants {
 
 	public static String[] IS_TRUE_OR_FALSE = { "true", "false" };
 
-	public static String[] BRAND_TAGS = { "dacia", "renault", "nissan" };
-	public static String[] BRAND_TYPES = { "MINOR", "MAJOR" };
-	public static String[] SERVICE_NAMES = { "VENTE Á CLIENTS PROFESSIONNELS", "ATELIER MÉCANIQUE", "MAGASIN PIÈCES DE RECHANGE", "BOUTIQUE" };
-
-	public static final String[] HEADER_COUNTRY_CODES = { "fr" };
+	public static final String[] LANG_COUNTRY_CODES = { "uk, de, fr, it, es, nl, be, pt, ch, at, pl, si, hr, sk, cz, hu" };
+	public static final String[] TRANSACTION_TYPE_TYPES = { "A", "C", "D", "N" };
+	public static final String[] VEHICLE_GENDER_TYPES = { "VP", "VU" };
+	public static final String[] YES_OR_NO = { "Y", "N" };
+	public static final String[] TRANSMISSION_TYPES = { "A", "M" };
+	public static final String[] DOORS_NUMBER = { "2", "4", "5", "6", };
+	public static final String[] PICTURE_TYPES = { "D", "E", "I" };
 	public static final String[] COUNTRY_CODES = { "FR" };
-	public static final String[] LANG_CODES = { "fr" };
 
 	// ------------------------------XML FIELDS---------------------------------
 
@@ -47,6 +48,10 @@ public class RenaultVOConstants {
 	// Equipment List Attributes
 	public static final String DESCRIPTION = "Description";
 	public static final String TITLE = "Title";
+
+	// Picture List Attributes
+	public static final String PICTURE_NAME = "PictureName";
+	public static final String PICTURE_TYPE = "PictureType";
 
 	// VO Attributes
 	public static final String TRANSACTION_TYPE = "TransactionType";

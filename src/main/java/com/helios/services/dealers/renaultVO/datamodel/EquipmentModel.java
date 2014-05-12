@@ -1,5 +1,7 @@
 package com.helios.services.dealers.renaultVO.datamodel;
 
+import java.util.Random;
+
 import com.helios.services.dealers.renaultVO.RenaultVOConstants;
 import com.helios.tools.FieldGenerators;
 import com.helios.tools.FieldGenerators.Mode;
@@ -39,9 +41,9 @@ public class EquipmentModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(3, Mode.ALPHA_CAPS);
+			value = FieldGenerators.generateRandomString(100, Mode.ALPHANUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(105, Mode.NUMERIC);
 
 		this.description = value;
 	}
@@ -59,9 +61,9 @@ public class EquipmentModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC) + "_VO" + FieldGenerators.generateRandomString(5, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(20, Mode.ALPHANUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(25, Mode.ALPHA);
 
 		this.usedCarNb = value;
 	}
@@ -77,11 +79,12 @@ public class EquipmentModel {
 	public void setCountryCode(boolean isValid) throws Exception {
 
 		String value;
+		Random random = new Random();
 
 		if (isValid)
-			value = RenaultVOConstants.COUNTRY_CODES[0];
+			value = RenaultVOConstants.LANG_COUNTRY_CODES[random.nextInt(RenaultVOConstants.LANG_COUNTRY_CODES.length)];
 		else
-			value = FieldGenerators.generateRandomString(5, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(10, Mode.NUMERIC);
 
 		this.countryCode = value;
 	}
@@ -97,11 +100,12 @@ public class EquipmentModel {
 	public void setLangCode(boolean isValid) throws Exception {
 
 		String value;
+		Random random = new Random();
 
 		if (isValid)
-			value = RenaultVOConstants.LANG_CODES[0];
+			value = RenaultVOConstants.LANG_COUNTRY_CODES[random.nextInt(RenaultVOConstants.LANG_COUNTRY_CODES.length)];
 		else
-			value = FieldGenerators.generateRandomString(5, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(10, Mode.NUMERIC);
 
 		this.langCode = value;
 	}
@@ -119,9 +123,9 @@ public class EquipmentModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(3, Mode.ALPHA_CAPS);
+			value = FieldGenerators.generateRandomString(20, Mode.ALPHANUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(25, Mode.NUMERIC);
 
 		this.title = value;
 	}

@@ -2,7 +2,9 @@ package com.helios.services.dealers.renaultVO.datamodel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
+import com.helios.services.dealers.renaultVO.RenaultVOConstants;
 import com.helios.tools.FieldGenerators;
 import com.helios.tools.FieldGenerators.Mode;
 
@@ -131,13 +133,13 @@ public class VOModel {
 	}
 
 	public void setTransactionType(boolean isValid) throws Exception {
-
 		String value;
+		Random random = new Random();
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(1, Mode.ALPHA_CAPS);
+			value = RenaultVOConstants.TRANSACTION_TYPE_TYPES[random.nextInt(RenaultVOConstants.TRANSACTION_TYPE_TYPES.length)];
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(10, Mode.NUMERIC);
 
 		this.transactionType = value;
 	}
@@ -155,7 +157,7 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(6, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(10, Mode.NUMERIC);
 		else
 			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
 
@@ -195,7 +197,7 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC) + "_VO" + FieldGenerators.generateRandomString(5, Mode.NUMERIC);
+			value = getDealerId() + "_VO" + FieldGenerators.generateRandomString(5, Mode.NUMERIC);
 		else
 			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
 
@@ -213,11 +215,12 @@ public class VOModel {
 	public void setLangCode(boolean isValid) throws Exception {
 
 		String value;
+		Random random = new Random();
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = RenaultVOConstants.LANG_COUNTRY_CODES[random.nextInt(RenaultVOConstants.LANG_COUNTRY_CODES.length)];
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(10, Mode.NUMERIC);
 
 		this.langCode = value;
 	}
@@ -235,9 +238,9 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(3, Mode.ALPHA);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(10, Mode.NUMERIC);
 
 		this.currency = value;
 	}
@@ -253,11 +256,12 @@ public class VOModel {
 	public void setVehicleGender(boolean isValid) throws Exception {
 
 		String value;
+		Random random = new Random();
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = RenaultVOConstants.VEHICLE_GENDER_TYPES[random.nextInt(RenaultVOConstants.VEHICLE_GENDER_TYPES.length)];
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(10, Mode.NUMERIC);
 
 		this.vehicleGender = value;
 	}
@@ -273,11 +277,12 @@ public class VOModel {
 	public void setSpecialOffer(boolean isValid) throws Exception {
 
 		String value;
+		Random random = new Random();
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = RenaultVOConstants.YES_OR_NO[random.nextInt(RenaultVOConstants.YES_OR_NO.length)];
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(10, Mode.NUMERIC);
 
 		this.specialOffer = value;
 	}
@@ -293,11 +298,12 @@ public class VOModel {
 	public void setvOManufacturer(boolean isValid) throws Exception {
 
 		String value;
+		Random random = new Random();
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = RenaultVOConstants.YES_OR_NO[random.nextInt(RenaultVOConstants.YES_OR_NO.length)];
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(10, Mode.NUMERIC);
 
 		this.vOManufacturer = value;
 	}
@@ -315,9 +321,9 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(30, Mode.ALPHANUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(35, Mode.ALPHA);
 
 		this.brand = value;
 	}
@@ -335,9 +341,9 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(25, Mode.ALPHANUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(30, Mode.ALPHA);
 
 		this.model = value;
 	}
@@ -355,9 +361,9 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(100, Mode.ALPHANUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(105, Mode.ALPHA);
 
 		this.modelFull = value;
 	}
@@ -375,9 +381,9 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(20, Mode.ALPHANUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(25, Mode.ALPHA);
 
 		this.version = value;
 	}
@@ -395,9 +401,9 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(20, Mode.ALPHANUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(25, Mode.ALPHA);
 
 		this.fuel = value;
 	}
@@ -415,10 +421,9 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(20, Mode.ALPHANUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
-
+			value = FieldGenerators.generateRandomString(25, Mode.ALPHA);
 		this.trim = value;
 	}
 
@@ -435,9 +440,9 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(20, Mode.ALPHANUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(25, Mode.ALPHA);
 
 		this.color = value;
 	}
@@ -453,11 +458,12 @@ public class VOModel {
 	public void setTransmissionType(boolean isValid) throws Exception {
 
 		String value;
+		Random random = new Random();
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = RenaultVOConstants.TRANSMISSION_TYPES[random.nextInt(RenaultVOConstants.TRANSMISSION_TYPES.length)];
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(10, Mode.NUMERIC);
 
 		this.transmissionType = value;
 	}
@@ -475,7 +481,7 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(4, Mode.NUMERIC);
 		else
 			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
 
@@ -495,7 +501,7 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(10, Mode.NUMERIC);
 		else
 			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
 
@@ -515,9 +521,9 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(20, Mode.NUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(25, Mode.ALPHA);
 
 		this.fiscalCriteria = value;
 	}
@@ -535,7 +541,7 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(8, Mode.ALPHANUMERIC);
 		else
 			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
 
@@ -555,9 +561,9 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(20, Mode.NUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(25, Mode.ALPHA);
 
 		this.registrationNumber = value;
 	}
@@ -575,7 +581,7 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(6, Mode.NUMERIC);
 		else
 			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
 
@@ -595,7 +601,7 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(10, Mode.ALPHANUMERIC);
 		else
 			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
 
@@ -615,7 +621,7 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(10, Mode.NUMERIC);
 		else
 			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
 
@@ -635,9 +641,9 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(40, Mode.ALPHANUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(45, Mode.ALPHA);
 
 		this.warranty = value;
 	}
@@ -655,9 +661,9 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(255, Mode.ALPHANUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(260, Mode.ALPHA);
 
 		this.freeComment = value;
 	}
@@ -675,7 +681,7 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(10, Mode.NUMERIC);
 		else
 			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
 
@@ -695,9 +701,9 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(50, Mode.ALPHANUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(60, Mode.ALPHA);
 
 		this.exhibitionSite = value;
 	}
@@ -713,12 +719,12 @@ public class VOModel {
 	public void setNbDoors(boolean isValid) throws Exception {
 
 		String value;
+		Random random = new Random();
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = RenaultVOConstants.DOORS_NUMBER[random.nextInt(RenaultVOConstants.DOORS_NUMBER.length)];
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
-
+			value = FieldGenerators.generateRandomString(10, Mode.NUMERIC);
 		this.nbDoors = value;
 	}
 
@@ -733,11 +739,12 @@ public class VOModel {
 	public void setRenaultExcellence(boolean isValid) throws Exception {
 
 		String value;
+		Random random = new Random();
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = RenaultVOConstants.YES_OR_NO[random.nextInt(RenaultVOConstants.YES_OR_NO.length)];
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(10, Mode.NUMERIC);
 
 		this.renaultExcellence = value;
 	}
@@ -755,9 +762,9 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(255, Mode.ALPHANUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(260, Mode.ALPHA);
 
 		this.contactName = value;
 	}
@@ -775,9 +782,9 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(60, Mode.ALPHANUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(65, Mode.ALPHA);
 
 		this.brandFull = value;
 	}
@@ -795,9 +802,9 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(50, Mode.ALPHANUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(55, Mode.ALPHA);
 
 		this.versionFull = value;
 	}
@@ -815,9 +822,9 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(50, Mode.ALPHANUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(55, Mode.ALPHA);
 
 		this.fuelFull = value;
 	}
@@ -835,9 +842,9 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(50, Mode.ALPHANUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(55, Mode.ALPHA);
 
 		this.trimFull = value;
 	}
@@ -855,9 +862,9 @@ public class VOModel {
 		String value;
 
 		if (isValid)
-			value = FieldGenerators.generateRandomString(8, Mode.NUMERIC);
+			value = FieldGenerators.generateRandomString(50, Mode.ALPHANUMERIC);
 		else
-			value = FieldGenerators.generateRandomString(19, Mode.ALPHA);
+			value = FieldGenerators.generateRandomString(55, Mode.ALPHA);
 
 		this.colorFull = value;
 	}

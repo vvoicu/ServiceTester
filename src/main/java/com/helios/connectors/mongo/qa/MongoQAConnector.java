@@ -6,6 +6,7 @@ import java.util.Set;
 
 import com.helios.services.dealers.france.FranceConstants;
 import com.helios.services.dealers.france.datamodels.DealerModel;
+import com.helios.services.dealers.renaultVO.datamodel.HeaderInfoModel;
 import com.helios.services.dealers.renaultVO.datamodel.VOModel;
 import com.helios.tools.Constants;
 import com.mongodb.BasicDBObject;
@@ -125,18 +126,19 @@ public class MongoQAConnector {
 
 	}
 
-	public static VOModel readInfoFromMongoDB(String dbName) {
+	public static HeaderInfoModel readInfoFromMongoDB(String dbName) {
 		DBObject dbObject = null;
-		VOModel result = new VOModel();
+		HeaderInfoModel result = new HeaderInfoModel();
 		db = mongoQaClient.getDB(dbName);
 		DBCursor dbCursor = db.getCollection("HeaderInfo").find();
 
 		try {
 			while (dbCursor.hasNext()) {
 				dbObject = dbCursor.next();
-				System.out.println("DDIT : " + dbObject.get("NbVO").toString());
-				System.out.println("DDIT : " + dbObject.get("CountryCode").toString());
-				// result.setBir_id(dbObject.get(FranceConstants.BIR_ID_TAG).toString());
+				System.out.println("field : " + dbObject.get("NbVO").toString());
+				System.out.println("field : " + dbObject.get("CountryCode").toString());
+				result.setNbVO(dbObject.get("NbVO").toString());
+				result.setCountryCode(dbObject.get("CountryCode").toString());
 			}
 		} finally {
 			dbCursor.close();

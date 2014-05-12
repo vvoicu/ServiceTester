@@ -1,5 +1,7 @@
 package com.helios.services.dealers.renaultVO.datamodel;
 
+import java.util.Random;
+
 import com.helios.services.dealers.france.FranceConstants;
 import com.helios.services.dealers.renaultVO.RenaultVOConstants;
 import com.helios.tools.FieldGenerators;
@@ -21,6 +23,9 @@ public class HeaderInfoModel {
 		setDateStockDMS(isValid);
 		setNbVO(isValid);
 		setCountryCode(isValid);
+	}
+
+	public HeaderInfoModel() {
 	}
 
 	public String getDateStockDMS() {
@@ -72,13 +77,13 @@ public class HeaderInfoModel {
 	}
 
 	public void setCountryCode(boolean isValid) throws Exception {
-
 		String value;
+		Random random = new Random();
 
 		if (isValid)
-			value = RenaultVOConstants.HEADER_COUNTRY_CODES[0];
+			value = RenaultVOConstants.LANG_COUNTRY_CODES[random.nextInt(RenaultVOConstants.LANG_COUNTRY_CODES.length)];
 		else
-			value = FieldGenerators.generateRandomString(5, Mode.ALPHANUMERIC);
+			value = FieldGenerators.generateRandomString(10, Mode.NUMERIC);
 
 		this.countryCode = value;
 	}
