@@ -51,6 +51,7 @@ public class VOModel {
 	private String colorFull;
 
 	private List<EquipmentModel> equipmentList = new ArrayList<EquipmentModel>();
+	private List<PicturesModel> picturesList = new ArrayList<PicturesModel>();
 	private HeaderInfoModel headerInfoModel;
 
 	public VOModel() {
@@ -104,6 +105,9 @@ public class VOModel {
 		EquipmentModel equipmentItem = new EquipmentModel(isValid);
 		equipmentList.add(equipmentItem);
 
+		PicturesModel pictureItem = new PicturesModel(isValid);
+		picturesList.add(pictureItem);
+
 		headerInfoModel = new HeaderInfoModel(isValid);
 
 	}
@@ -122,6 +126,18 @@ public class VOModel {
 
 	public void setEquipmentList(List<EquipmentModel> eList) {
 		equipmentList = eList;
+	}
+
+	public List<PicturesModel> getPicturesList() {
+		return picturesList;
+	}
+
+	public void addPictureToList(PicturesModel pModel) {
+		picturesList.add(pModel);
+	}
+
+	public void setPicturesList(List<PicturesModel> pList) {
+		picturesList = pList;
 	}
 
 	public String getTransactionType() {

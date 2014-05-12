@@ -12,6 +12,15 @@ public class PicturesModel {
 	private String pictureType;
 	private String usedCarNb;
 
+	public PicturesModel(boolean isValid) throws Exception {
+		setPictureName(isValid);
+		setPictureType(isValid);
+		setUsedCarNb(isValid);
+	}
+
+	public PicturesModel() {
+	}
+
 	public String getPictureName() {
 		return pictureName;
 	}

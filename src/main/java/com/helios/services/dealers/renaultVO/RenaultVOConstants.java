@@ -39,6 +39,7 @@ public class RenaultVOConstants {
 	public static final String HEADER_INFO = "HeaderInfo";
 	public static final String VO = "VO";
 	public static final String EQUIPMENT_LIST = "EquipmentList";
+	public static final String PICTURES_LIST = "EquipmentList";
 
 	// Header Info Attributes
 	public static final String DATE_STOCK_DMS = "DateStockDMS";

@@ -9,6 +9,7 @@ import org.w3c.dom.Element;
 
 import com.helios.services.dealers.renaultVO.datamodel.EquipmentModel;
 import com.helios.services.dealers.renaultVO.datamodel.HeaderInfoModel;
+import com.helios.services.dealers.renaultVO.datamodel.PicturesModel;
 import com.helios.services.dealers.renaultVO.datamodel.VOModel;
 import com.helios.tools.utils.FormatterUtils;
 
@@ -31,7 +32,7 @@ public class RenaultVOFormatter extends FormatterUtils {
 		Element stockVO = doc.createElement(RenaultVOConstants.DOC_ROOT);
 		doc.appendChild(stockVO);
 
-		// header info section
+		// Header info section
 		HeaderInfoModel headerInfoModel = model.getHeaderInfo();
 
 		Element headerInfo = doc.createElement(RenaultVOConstants.HEADER_INFO);
@@ -227,6 +228,27 @@ public class RenaultVOFormatter extends FormatterUtils {
 				eqAttr5.setValue(eqModel.getTitle());
 				equipmentListTag.setAttributeNode(eqAttr5);
 
+			}
+		}
+
+		// PictureList section
+
+		if (model.getPicturesList().size() > 0) {
+			for (PicturesModel pModel : model.getPicturesList()) {
+				Element pictureListTag = doc.createElement(RenaultVOConstants.PICTURES_LIST);
+				stockVO.appendChild(pictureListTag);
+
+				Attr eqAttr1 = doc.createAttribute(RenaultVOConstants.PICTURE_NAME);
+				eqAttr1.setValue(pModel.getPictureName());
+				pictureListTag.setAttributeNode(eqAttr1);
+
+				Attr eqAttr2 = doc.createAttribute(RenaultVOConstants.PICTURE_TYPE);
+				eqAttr2.setValue(pModel.getPictureType());
+				pictureListTag.setAttributeNode(eqAttr2);
+
+				Attr eqAttr3 = doc.createAttribute(RenaultVOConstants.USED_CAR_NB);
+				eqAttr3.setValue(pModel.getUsedCarNb());
+				pictureListTag.setAttributeNode(eqAttr3);
 			}
 		}
 
