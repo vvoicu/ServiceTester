@@ -9,12 +9,15 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
+import org.w3c.dom.Document;
 
 import com.helios.tools.Constants;
+import com.mongodb.BasicDBObject;
 
 @SuppressWarnings("deprecation")
 public class HttpMainProtocol {
@@ -48,8 +51,8 @@ public class HttpMainProtocol {
 		HttpGetWithEntity myGet = new HttpGetWithEntity();
 		URI uri = URI.create(url);
 		myGet.setURI(uri);
-		// myGet.setHeader("Content-Type", "text/json");
-		myGet.setHeader("Content-Type", "text/xml");
+//		 myGet.setHeader("Content", "test");
+		myGet.setHeader("Content-Type", "test");
 		myGet.setEntity(new StringEntity(message, "UTF8"));
 
 		System.out.println("Request: " + myGet.toString());
@@ -106,6 +109,31 @@ public class HttpMainProtocol {
 
 	public void close() {
 		httpclient.close();
+	}
+
+	public HttpResponse sendPost(String url, BasicDBObject myMessage) throws ClientProtocolException, IOException {
+//		HttpGetWithEntity myGet = new HttpGetWithEntity();
+		HttpPost currentPost = new HttpPost(url);
+		HttpEntity newEntity = new StringEntity(myMessage.toString());
+//		URI uri = URI.create(url);
+//		myGet.setURI(uri);
+//		 myGet.setHeader("Content-Type", "text/json");
+//		myGet.setHeader("Content-Type", "text/xml");
+		currentPost.setHeader("Content-Type", "application/json");
+//		currentPost.setHeader("Content-Type", "text/xml");
+		currentPost.setEntity(newEntity);
+//		myGet.setEntity(new DocumentEntity(myMessage));
+
+//		System.out.println("Request: " + currentPost.toString());
+
+//		entity = new StringEntity(myMessage, "UTF8");
+
+		HttpResponse response = httpclient.execute(currentPost);
+		// HttpResponse response = client.execute(myGet);
+
+		System.out.println("Response Code : " + response.getStatusLine());
+
+		return response;
 	}
 
 }

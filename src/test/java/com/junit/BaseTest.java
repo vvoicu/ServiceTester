@@ -22,12 +22,14 @@ public class BaseTest extends TestCase {
 	public void startComponents() {
 		try {
 			mongoDev = new MongoDevConnector();
+			System.out.println("Connected to Dev Mongo DB");
 		} catch (UnknownHostException e) {
 			System.out.println("Error: Dev Mongo connection could not be initialized");
 			e.printStackTrace();
 		}
 		try {
 			mongoQA = new MongoQAConnector();
+			System.out.println("Connected to QA Mongo DB");
 		} catch (UnknownHostException e) {
 			System.out.println("Error: QA Mongo connection could not be initialized");
 			e.printStackTrace();

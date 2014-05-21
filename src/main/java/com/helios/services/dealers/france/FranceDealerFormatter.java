@@ -15,6 +15,8 @@ import com.helios.services.dealers.france.datamodels.AppointmentModel;
 import com.helios.services.dealers.france.datamodels.DealerModel;
 import com.helios.services.dealers.france.datamodels.ServiceModel;
 import com.helios.tools.utils.FormatterUtils;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBCollection;
 
 public class FranceDealerFormatter extends FormatterUtils {
 
@@ -167,6 +169,17 @@ public class FranceDealerFormatter extends FormatterUtils {
 
 		return doc;
 
+	}
+
+	public BasicDBObject generateJsonData(DealerModel dModel) {
+
+		BasicDBObject document = new BasicDBObject();
+		document.put(FranceConstants.BIR_ID_TAG, dModel.getBir_id());
+		document.put(FranceConstants.COUNTRY_TAG, dModel.getCountry());
+		document.put(FranceConstants.DEALER_NAME, dModel.getDealer_name());
+		document.put(FranceConstants.HAS_FIXED_PRICE_TAG, dModel.getHas_fixedprice());
+		document.put(FranceConstants.DISTANCE, dModel.getDistance());
+		return document;
 	}
 
 }
